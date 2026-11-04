@@ -68,7 +68,5 @@ pages = {110534},
 year = {2024},
 issn = {2352-3409},
 doi = {https://doi.org/10.1016/j.dib.2024.110534},
-url = {https://www.sciencedirect.com/science/article/pii/S2352340924005018},
 }
 
-This README describes the research plan based on the project summary. Implementation details, dataset DOI/citation, dependency versions, actual directory layout, and runnable commands should be updated to reflect the files and experiments as they are added.
