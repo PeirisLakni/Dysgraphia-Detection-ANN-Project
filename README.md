@@ -1,7 +1,5 @@
 # Potential Dysgraphia Screening from Handwriting
 
-> **Research prototype — not a diagnostic tool.** This project explores whether handwriting images can support early screening for potential dysgraphia. Predictions are intended only as decision support for qualified educational professionals and must not replace a comprehensive assessment.
-
 ## Project overview
 
 Dysgraphia can affect handwriting legibility, letter formation, spacing, alignment, and consistency. Conventional handwriting assessment can require substantial manual effort and may vary between evaluators. This project investigates an AI-assisted approach for analyzing handwriting samples and flagging cases that may warrant further assessment.
@@ -16,12 +14,12 @@ The study uses the publicly available **Potential Dysgraphia Dataset** hosted on
 
 - **249 handwritten images** from **83 children**
 - Three sentence samples per child, with increasing sentence complexity
-- **Potential Dysgraphia (PD):** 114 images
-- **Low Potential Dysgraphia (LPD):** 135 images
+- **Potential Dysgraphia (PD):** 114 images from 38 children
+- **Low Potential Dysgraphia (LPD):** 135 images from 45 children
 
-The intended prediction unit is the **child**, not an individual image: the three samples belonging to a child are analyzed collectively to produce one screening prediction. Confirm the dataset's current terms of use, citation requirements, label definitions, and file organization on its Mendeley Data landing page before using or redistributing it. Dataset files are not included in this repository.
+The intended prediction unit is the **child**, not an individual image: the three samples belonging to a child are analyzed collectively to produce one screening prediction.
 
-> **Important:** Image counts are sample-level counts, while model evaluation should be conducted at child level. Keep all samples from a child within the same data split to prevent identity leakage. Any augmentation or preprocessing used for training must be applied only after splitting.
+> Image counts are sample-level counts, while model evaluation should be conducted at child level. Keep all samples from a child within the same data split to prevent identity leakage. Any augmentation or preprocessing used for training must be applied only after splitting.
 
 ## Objectives
 
@@ -36,7 +34,7 @@ The intended prediction unit is the **child**, not an individual image: the thre
 
 ## Repository contents
 
-This repository is intended to hold the project’s preprocessing, training, evaluation, and deployment scripts and notebooks, along with documentation and environment setup. The project is under development; update this section as files and workflows are added.
+This repository is intended to hold the project’s preprocessing, training, evaluation, and deployment scripts and notebooks, along with documentation and environment setup.
 
 ```text
 .
@@ -50,60 +48,6 @@ This repository is intended to hold the project’s preprocessing, training, eva
 └── docs/                     # Methods, dataset notes, and experiment documentation
 ```
 
-## Getting started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/PeirisLakni/Dysgraphia-Detection-ANN-Project.git
-cd Dysgraphia-Detection-ANN-Project
-```
-
-### 2. Create an environment
-
-Python version and dependency pins should be documented in the project environment file once implementation choices are finalized. For a virtual environment:
-
-```bash
-python -m venv .venv
-```
-
-Activate it:
-
-```bash
-# Linux/macOS
-source .venv/bin/activate
-
-# Windows PowerShell
-.venv\Scripts\Activate.ps1
-```
-
-Install dependencies when `requirements.txt` is populated:
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Obtain and place the dataset
-
-Download the dataset from its Mendeley Data page, follow its license and citation terms, and place the files in the local data directory. Do not commit the dataset or identifiable handwriting images unless the dataset terms and project approvals explicitly permit redistribution.
-
-The expected directory structure and metadata format should be documented here after verifying the downloaded dataset. Ensure there is a reliable mapping from each image to its child identifier and class label; do not infer child grouping from filenames unless verified.
-
-### 4. Run project workflows
-
-Commands for EDA, preprocessing, training, evaluation, and the application will be added when the corresponding scripts and notebooks are available. Record configuration, random seeds, data split strategy, model checkpoints, and evaluation outputs to support reproducibility.
-
-## Evaluation and experimental integrity
-
-- Split data by **child identifier** (grouped splitting), not by image.
-- Keep a held-out test group untouched during model selection and hyperparameter tuning.
-- Use validation data or grouped cross-validation for model selection where appropriate.
-- Report class-wise performance and confusion matrices. In particular, report PD recall alongside precision, F1-score, specificity, and support.
-- State the positive class and metric averaging method explicitly.
-- Compare ANN and HOG/SVM approaches using the same leakage-safe splits.
-- Document preprocessing, thresholds, random seeds, software/hardware, and deviations from the planned protocol.
-- Avoid claims of clinical validity or generalization beyond the dataset without appropriate independent validation.
-
 ## Responsible use and limitations
 
 This is an experimental educational screening prototype, not a medical or clinical diagnostic system. Dataset size is limited, and labels are preliminary; performance may not generalize across ages, languages, writing tasks, schools, writing instruments, or populations. Handwriting is personal data in many contexts. Protect uploaded samples, minimize retention, restrict access, and obtain appropriate consent and approvals before collecting or processing real-world student data. Human review and further assessment are necessary for any consequential decision.
@@ -116,12 +60,15 @@ A Streamlit interface and FastAPI service are proposed for uploading handwriting
 
 ## Citation and dataset acknowledgement
 
-Please cite the Potential Dysgraphia Dataset using the citation provided on its Mendeley Data page. Add the exact dataset DOI and citation here after confirming the version used. Also cite relevant model architectures, libraries, and methods in project reports and documentation.
-
-## License
-
-The repository’s code license and the dataset’s license are separate. Check the dataset’s terms before use or redistribution. Add a repository license if and when the project owner chooses one.
-
-## Project status
+@article{RAMLAN2024110534,
+title = {Development of potential dysgraphia handwriting dataset},
+journal = {Data in Brief},
+volume = {54},
+pages = {110534},
+year = {2024},
+issn = {2352-3409},
+doi = {https://doi.org/10.1016/j.dib.2024.110534},
+url = {https://www.sciencedirect.com/science/article/pii/S2352340924005018},
+}
 
 This README describes the research plan based on the project summary. Implementation details, dataset DOI/citation, dependency versions, actual directory layout, and runnable commands should be updated to reflect the files and experiments as they are added.
